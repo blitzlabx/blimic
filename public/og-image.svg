@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a1026" />
+      <stop offset="60%" stop-color="#030712" />
+      <stop offset="100%" stop-color="#02040a" />
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#f59e0b" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Cosmic Canvas -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+
+  <!-- Orbital Ellipses -->
+  <g opacity="0.35" stroke="#38bdf8" stroke-width="1.2" fill="none">
+    <ellipse cx="600" cy="315" rx="180" ry="80" stroke-dasharray="4 6" />
+    <ellipse cx="600" cy="315" rx="320" ry="140" stroke-dasharray="3 5" />
+    <ellipse cx="600" cy="315" rx="460" ry="200" />
+    <ellipse cx="600" cy="315" rx="560" ry="245" stroke-dasharray="6 8" />
+  </g>
+
+  <!-- Central Star Sol -->
+  <circle cx="600" cy="315" r="90" fill="url(#sunGlow)" />
+  <circle cx="600" cy="315" r="28" fill="#fbbf24" />
+
+  <!-- Sample Planets -->
+  <circle cx="480" cy="280" r="10" fill="#38bdf8" />
+  <circle cx="780" cy="240" r="14" fill="#f97316" />
+  <ellipse cx="780" cy="240" rx="24" ry="6" fill="none" stroke="#fdba74" stroke-width="1.5" transform="rotate(-15 780 240)" />
+  <circle cx="260" cy="390" r="18" fill="#eab308" />
+  <circle cx="940" cy="360" r="12" fill="#06b6d4" />
+
+  <!-- Spaceship Vector -->
+  <path d="M 520,380 L 536,374 L 526,386 Z" fill="#ffffff" />
+  <line x1="520" y1="380" x2="495" y2="395" stroke="#06b6d4" stroke-width="2" opacity="0.7" />
+
+  <!-- Brand Typography -->
+  <text x="80" y="140" font-family="'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif" font-size="64" font-weight="800" fill="#ffffff" letter-spacing="-1">
+    blimic
+  </text>
+  <text x="290" y="140" font-family="'JetBrains Mono', monospace" font-size="28" font-weight="500" fill="#38bdf8">
+    by Blitz
+  </text>
+  <text x="80" y="185" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="400" fill="#94a3b8">
+    Interactive Solar System Simulation & Spaceship Flight Engine
+  </text>
+
+  <!-- Bottom Badges -->
+  <rect x="80" y="520" width="220" height="42" rx="10" fill="#0f172a" stroke="#1e293b" />
+  <text x="100" y="547" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#38bdf8">
+    KEPLER-J2000 SOLVER
+  </text>
+
+  <rect x="315" y="520" width="250" height="42" rx="10" fill="#0f172a" stroke="#1e293b" />
+  <text x="335" y="547" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#a855f7">
+    PILOT & SURFACE LANDER
+  </text>
+
+  <rect x="580" y="520" width="230" height="42" rx="10" fill="#0f172a" stroke="#1e293b" />
+  <text x="600" y="547" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" fill="#10b981">
+    DIGITAL LAB // blitzlabx
+  </text>
+</svg>

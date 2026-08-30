@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#030712"/>
+  <circle cx="32" cy="32" r="14" fill="url(#sunGrad)"/>
+  <!-- Orbital Ring -->
+  <ellipse cx="32" cy="32" rx="24" ry="10" transform="rotate(-30 32 32)" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="6 3" opacity="0.85"/>
+  <!-- Orbiting World -->
+  <circle cx="48" cy="23" r="4.5" fill="#22d3ee"/>
+  <circle cx="16" cy="41" r="3" fill="#a855f7"/>
+  <defs>
+    <radialGradient id="sunGrad" cx="0%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="30%" stop-color="#38bdf8"/>
+      <stop offset="80%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </radialGradient>
+  </defs>
+</svg>
