@@ -21,7 +21,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
 
   return (
     <nav
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-gray-950/95 backdrop-blur-lg border-t border-gray-800/90 px-2 py-1.5 flex items-center justify-around shadow-2xl safe-area-bottom select-none"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-canvas/95 backdrop-blur-md border-t border-subtle px-2 py-1.5 flex items-center justify-around select-none"
       aria-label="Mobile Navigation"
     >
       {items.map((item) => {
@@ -33,20 +33,20 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           <button
             key={item.id}
             onClick={() => onNavigateRoute(item.id)}
-            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all ${
+            className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-sm transition-colors ${
               isActive
-                ? 'text-cyan-400 font-bold'
+                ? 'text-emerald-400 font-bold'
                 : isSpaceship
-                ? 'text-cyan-300'
-                : 'text-gray-400 active:text-gray-200'
+                ? 'text-emerald-300'
+                : 'text-secondary active:text-primary'
             }`}
           >
             <div
-              className={`p-1 rounded-lg transition-colors ${
+              className={`p-1 rounded-sm transition-colors ${
                 isActive
-                  ? 'bg-cyan-500/20 text-cyan-300'
+                  ? 'bg-emerald-500/10 text-emerald-300'
                   : isSpaceship
-                  ? 'bg-cyan-950/60 text-cyan-400 border border-cyan-500/30'
+                  ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-500/30'
                   : ''
               }`}
             >

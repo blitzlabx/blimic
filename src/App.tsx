@@ -42,7 +42,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 selection:bg-cyan-500/30 selection:text-cyan-200 flex flex-col">
+    <div className="min-h-screen bg-canvas text-primary selection:bg-emerald-500/30 selection:text-emerald-200 flex flex-col">
       
       {/* Fixed Header Navigation Bar */}
       <Navbar
@@ -88,7 +88,7 @@ export default function App() {
 
         {/* Route 3: Dedicated World Explorer */}
         {currentRoute === 'worlds' && (
-          <div className="max-w-7xl mx-auto w-full py-6">
+          <div className="max-w-7xl mx-auto w-full py-6 px-4 sm:px-6 lg:px-8">
             <WorldExplorer
               bodies={CELESTIAL_BODIES}
               selectedBodyId={selectedBodyId}
@@ -100,14 +100,14 @@ export default function App() {
 
         {/* Route 4: Dedicated Scale & Kepler Physics */}
         {currentRoute === 'physics' && (
-          <div className="max-w-7xl mx-auto w-full py-6">
+          <div className="max-w-7xl mx-auto w-full py-6 px-4 sm:px-6 lg:px-8">
             <ExperienceSection bodies={CELESTIAL_BODIES} />
           </div>
         )}
 
         {/* Route 5: Dedicated Astrophysics Field Guide */}
         {currentRoute === 'field-guide' && (
-          <div className="max-w-7xl mx-auto w-full py-6">
+          <div className="max-w-7xl mx-auto w-full py-6 px-4 sm:px-6 lg:px-8">
             <FieldGuideSection
               bodies={CELESTIAL_BODIES}
               onSelectBody={(id) => {
@@ -120,7 +120,7 @@ export default function App() {
 
         {/* Route 6: About Blitz & Architecture */}
         {currentRoute === 'about' && (
-          <div className="max-w-7xl mx-auto w-full py-6">
+          <div className="max-w-7xl mx-auto w-full py-6 px-4 sm:px-6 lg:px-8">
             <AboutBlitzSection />
           </div>
         )}
@@ -137,19 +137,19 @@ export default function App() {
             />
 
             {/* 2. Interactive Solar System Canvas Simulation */}
-            <div className="border-t border-gray-800">
+            <div className="border-t border-subtle">
               <div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white font-display">
+                  <h2 className="text-xl sm:text-2xl font-bold text-primary font-display">
                     Interactive Solar System Simulation
                   </h2>
-                  <p className="text-xs text-gray-400 font-mono">
+                  <p className="text-xs text-secondary font-mono">
                     Real-time Keplerian orbital model with live epoch telemetry
                   </p>
                 </div>
                 <button
                   onClick={() => handleNavigateRoute('simulation')}
-                  className="px-3.5 py-1.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-cyan-300 border border-cyan-500/40 text-xs font-mono transition-colors"
+                  className="px-3.5 py-1.5 rounded-sm bg-surface hover:bg-surface-elevated text-emerald-300 border border-emerald-500/40 text-xs font-mono transition-colors"
                 >
                   Full-Screen Sim Mode →
                 </button>

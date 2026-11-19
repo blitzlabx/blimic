@@ -82,31 +82,31 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl bg-gray-950 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90dvh] sm:max-h-[92vh]"
+        className="relative w-full max-w-4xl bg-canvas border border-subtle rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90dvh] sm:max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Header */}
-        <div className="p-3 sm:p-4 bg-gray-900/80 border-b border-gray-800 flex items-center justify-between shrink-0">
+        <div className="p-3 sm:p-4 bg-surface/80 border-b border-subtle flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-lg bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
               <Compass className="w-4 h-4" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="font-bold text-white font-display text-sm sm:text-base truncate">
+                <span className="font-bold text-primary font-display text-sm sm:text-base truncate">
                   Quantum Navigation & System Map
                 </span>
-                <Badge variant="cyan">Teleport Vector Ready</Badge>
+                <Badge variant="emerald">Teleport Vector Ready</Badge>
               </div>
-              <p className="text-[11px] sm:text-xs text-gray-400 font-mono truncate">
+              <p className="text-[11px] sm:text-xs text-secondary font-mono truncate">
                 Tap any world or coordinate sector to initiate quantum warp
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors shrink-0 ml-2"
+            className="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-elevated transition-colors shrink-0 ml-2"
             aria-label="Close system map"
           >
             <X className="w-5 h-5" />
@@ -117,7 +117,7 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
         <div className="flex-1 flex flex-col lg:grid lg:grid-cols-3 overflow-y-auto lg:overflow-hidden min-h-0">
           
           {/* Interactive Solar Map SVG Canvas */}
-          <div className="lg:col-span-2 relative bg-gray-950/90 p-2 sm:p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-gray-800/80 overflow-hidden select-none shrink-0 min-h-[220px] sm:min-h-[320px] lg:min-h-0">
+          <div className="lg:col-span-2 relative bg-canvas/90 p-2 sm:p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-subtle/80 overflow-hidden select-none shrink-0 min-h-[220px] sm:min-h-[320px] lg:min-h-0">
             <svg
               viewBox="-700 -700 1400 1400"
               className="w-full h-full max-h-[300px] sm:max-h-[440px] cursor-crosshair touch-none"
@@ -249,22 +249,22 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
             </svg>
 
             {/* Map Controls Watermark */}
-            <div className="absolute bottom-2 left-2 text-[10px] text-gray-400 font-mono bg-gray-900/80 px-2 py-1 rounded border border-gray-800">
+            <div className="absolute bottom-2 left-2 text-[10px] text-secondary font-mono bg-surface/80 px-2 py-1 rounded border border-subtle">
               CLICK CANVAS TO SET COORDINATE WAYPOINT
             </div>
           </div>
 
           {/* Destination Selector & Quantum Jump Terminal */}
-          <div className="flex-1 p-3 sm:p-4 flex flex-col justify-between bg-gray-900/40 space-y-3 sm:space-y-4 min-h-0">
+          <div className="flex-1 p-3 sm:p-4 flex flex-col justify-between bg-surface/40 space-y-3 sm:space-y-4 min-h-0">
             
             {/* Quick World Selectors */}
             <div className="space-y-1.5 sm:space-y-2">
-              <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono text-gray-400">
+              <div className="flex items-center justify-between text-[11px] sm:text-xs font-mono text-secondary">
                 <span>SELECT DESTINATION WORLD:</span>
                 {customWaypoint && (
                   <button
                     onClick={() => setCustomWaypoint(null)}
-                    className="text-cyan-400 hover:underline text-xs"
+                    className="text-emerald-400 hover:underline text-xs"
                   >
                     Clear Waypoint
                   </button>
@@ -283,8 +283,8 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
                       }}
                       className={`flex items-center gap-2 px-2.5 py-2 rounded-lg border text-left text-xs transition-all ${
                         isSelected
-                          ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 font-semibold shadow-sm shadow-cyan-500/20'
-                          : 'bg-gray-900 text-gray-300 hover:bg-gray-800 border-gray-800'
+                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 font-semibold shadow-sm shadow-emerald-500/20'
+                          : 'bg-surface text-primary hover:bg-surface-elevated border-subtle'
                       }`}
                     >
                       <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: b.color }} />
@@ -296,23 +296,23 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
             </div>
 
             {/* Selected Target Readout */}
-            <div className="p-3 bg-gray-950 border border-gray-800 rounded-xl space-y-2 text-xs font-mono">
-              <div className="flex items-center justify-between border-b border-gray-800 pb-1.5">
-                <span className="text-gray-400">Target Vector:</span>
-                <span className="text-white font-bold text-sm truncate max-w-[180px]">
+            <div className="p-3 bg-canvas border border-subtle rounded-xl space-y-2 text-xs font-mono">
+              <div className="flex items-center justify-between border-b border-subtle pb-1.5">
+                <span className="text-secondary">Target Vector:</span>
+                <span className="text-primary font-bold text-sm truncate max-w-[180px]">
                   {distanceEstimate.name}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400">Distance:</span>
-                <span className="text-cyan-400 font-bold">{distanceEstimate.au} AU</span>
+                <span className="text-secondary">Distance:</span>
+                <span className="text-emerald-400 font-bold">{distanceEstimate.au} AU</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400">Physical Range:</span>
-                <span className="text-gray-300">{distanceEstimate.km} km</span>
+                <span className="text-secondary">Physical Range:</span>
+                <span className="text-primary">{distanceEstimate.km} km</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400">Transit Mode:</span>
+                <span className="text-secondary">Transit Mode:</span>
                 <span className="text-emerald-400 font-semibold">Instant Quantum Warp</span>
               </div>
             </div>
@@ -321,12 +321,12 @@ export const TacticalSystemMap: React.FC<TacticalSystemMapProps> = ({
             <div className="space-y-1.5 pt-2 pb-1">
               <button
                 onClick={handleExecuteJump}
-                className="w-full py-3 px-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 active:bg-cyan-300 text-gray-950 font-bold font-mono text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25 active:scale-[0.98] transition-all min-h-[44px]"
+                className="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-300 text-canvas font-bold font-mono text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-[0.98] transition-all min-h-[44px]"
               >
-                <Zap className="w-4 h-4 fill-gray-950 shrink-0" />
+                <Zap className="w-4 h-4 fill-canvas shrink-0" />
                 <span>INITIATE QUANTUM WARP JUMP</span>
               </button>
-              <p className="text-[10px] text-gray-400 text-center font-mono">
+              <p className="text-[10px] text-secondary text-center font-mono">
                 Locks quantum coordinates and initiates relativistic warp cruise
               </p>
             </div>

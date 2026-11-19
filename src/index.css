@@ -1,64 +1,128 @@
 @import "tailwindcss";
 
+@theme {
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-surface-elevated: var(--bg-surface-elevated);
+  --color-subtle: var(--border-subtle);
+  --color-hover: var(--border-hover);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
+
+    /* Archetype B: Technical Dense Terminal */
+    --bg-canvas: #0c0d0e;
+    --bg-surface: #141618;
+    --bg-surface-elevated: #1a1d20;
+    --border-subtle: #24282c;
+    --border-hover: #383e44;
+    --accent-primary: #10b981;
+    --accent-secondary: #f59e0b;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6b7280;
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 6px;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #030712;
-    color: #f3f4f6;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, .font-display {
     font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 
   code, kbd, samp, pre, .font-mono {
     font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
   }
 }
 
-/* Custom Astronomical UI Utilities */
+/* Remove cosmic-grid radial glow — replaced with hairline containment */
 .cosmic-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-.cosmic-radial-mask {
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+/* Hairline border utility */
+.border-hairline {
+  border: 1px solid var(--border-subtle);
 }
 
-.subtle-border {
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* 8-State Interactive Feedback System */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  border-radius: var(--radius-sm, 2px);
+  background: var(--accent-primary, #10b981);
+  color: #0c0d0e;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 140ms ease-out, transform 80ms ease-out, border-color 140ms ease-out, opacity 140ms ease-out;
 }
 
-.subtle-border-hover:hover {
-  border-color: rgba(56, 189, 248, 0.35);
+.btn-primary:hover {
+  filter: brightness(1.08);
 }
 
-/* Custom sleek scrollbar */
+.btn-primary:focus-visible {
+  outline: 2px solid var(--accent-primary, #10b981);
+  outline-offset: 2px;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-primary:disabled,
+.btn-primary[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sleek scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: var(--bg-canvas);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: #24282c;
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #374151;
+  background: #383e44;
 }
 
 /* Prevent unwanted callouts on mobile touch */
@@ -66,4 +130,15 @@ canvas {
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
+}
+
+/* Tabular numbers on all metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus-visible ring utility for non-button interactive elements */
+.focus-ring {
+  outline: 2px solid var(--accent-primary, #10b981);
+  outline-offset: 2px;
 }

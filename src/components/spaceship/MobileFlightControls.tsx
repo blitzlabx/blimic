@@ -112,14 +112,14 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
     <div className="lg:hidden flex flex-col justify-between absolute inset-0 z-20 pointer-events-none p-2 sm:p-3 overflow-hidden select-none touch-none overscroll-none">
       
       {/* Top Mobile Flight Telemetry Bar (Ultra-compact & translucent) */}
-      <div className="w-full flex items-center justify-between bg-gray-950/75 backdrop-blur-md border border-cyan-500/20 rounded-xl p-1.5 px-2.5 shadow-lg pointer-events-auto mt-0.5 sm:mt-1 touch-none">
+      <div className="w-full flex items-center justify-between bg-canvas/75 backdrop-blur-md border border-emerald-500/20 rounded-xl p-1.5 px-2.5 shadow-lg pointer-events-auto mt-0.5 sm:mt-1 touch-none">
         <div className="flex items-center gap-1.5 min-w-0">
-          <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
           <div className="truncate flex items-baseline gap-1.5">
-            <span className="text-xs font-bold text-white font-mono truncate">
-              {ship.speedKms.toFixed(0)} <span className="text-[9px] text-gray-400 font-normal">km/s</span>
+            <span className="text-xs font-bold text-primary font-mono truncate">
+              {ship.speedKms.toFixed(0)} <span className="text-[9px] text-secondary font-normal">km/s</span>
             </span>
-            <span className="text-[10px] text-cyan-400 font-mono truncate hidden sm:inline">
+            <span className="text-[10px] text-emerald-400 font-mono truncate hidden sm:inline">
               Target: {ship.targetBody ? ship.targetBody.name : 'Free Space'}
             </span>
           </div>
@@ -130,7 +130,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
           {onZoomIn && (
             <button
               onClick={onZoomIn}
-              className="p-1.5 rounded-lg bg-gray-900/80 border border-gray-800 text-cyan-400 active:bg-gray-800 transition-colors"
+              className="p-1.5 rounded-lg bg-surface/80 border border-subtle text-emerald-400 active:bg-surface-elevated transition-colors"
               title="Zoom In Simulation"
               aria-label="Zoom In"
             >
@@ -140,7 +140,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
           {onZoomOut && (
             <button
               onClick={onZoomOut}
-              className="p-1.5 rounded-lg bg-gray-900/80 border border-gray-800 text-cyan-400 active:bg-gray-800 transition-colors"
+              className="p-1.5 rounded-lg bg-surface/80 border border-subtle text-emerald-400 active:bg-surface-elevated transition-colors"
               title="Zoom Out Simulation"
               aria-label="Zoom Out"
             >
@@ -149,7 +149,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
           )}
           <button
             onClick={onOpenMapModal}
-            className="p-1.5 rounded-lg bg-cyan-950/70 border border-cyan-500/40 text-cyan-300 active:bg-cyan-900 transition-colors flex items-center gap-1 font-mono text-[10px] font-bold px-2"
+            className="p-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 active:bg-emerald-900 transition-colors flex items-center gap-1 font-mono text-[10px] font-bold px-2"
             title="System Map & Teleport"
           >
             <Map className="w-3 h-3" />
@@ -157,7 +157,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
           </button>
           <button
             onClick={onOpenSettingsModal}
-            className="p-1.5 rounded-lg bg-gray-900/80 border border-gray-800 text-gray-300 active:bg-gray-800 transition-colors"
+            className="p-1.5 rounded-lg bg-surface/80 border border-subtle text-primary active:bg-surface-elevated transition-colors"
             title="Flight Settings"
             aria-label="Flight Settings"
           >
@@ -174,18 +174,18 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
 
       {/* Proximity / Orbit Capture Floating Alert (Mobile) */}
       {isInsideSOI && ship.proximityBody && (
-        <div className="mx-auto w-full max-w-xs bg-cyan-950/90 border border-cyan-400/70 rounded-xl p-2 shadow-2xl pointer-events-auto flex items-center justify-between gap-2 touch-none backdrop-blur-sm">
+        <div className="mx-auto w-full max-w-xs bg-emerald-950/90 border border-emerald-400/70 rounded-xl p-2 shadow-2xl pointer-events-auto flex items-center justify-between gap-2 touch-none backdrop-blur-sm">
           <div className="min-w-0">
-            <span className="text-xs font-bold font-mono text-white block truncate">
+            <span className="text-xs font-bold font-mono text-primary block truncate">
               {ship.proximityBody.name} Orbit Captured
             </span>
-            <span className="text-[9px] text-cyan-300 font-mono block truncate">
+            <span className="text-[9px] text-emerald-300 font-mono block truncate">
               Gravitational vector locked
             </span>
           </div>
           <button
             onClick={onEnterOrbit}
-            className="px-2.5 py-1 rounded-lg bg-cyan-400 active:bg-cyan-500 text-gray-950 font-bold font-mono text-[11px] tracking-wider shrink-0 shadow-md"
+            className="px-2.5 py-1 rounded-lg bg-emerald-400 active:bg-emerald-500 text-canvas font-bold font-mono text-[11px] tracking-wider shrink-0 shadow-md"
           >
             ENTER
           </button>
@@ -197,14 +197,14 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
         
         {/* Left: Joystick or Split D-Pad */}
         {settings.controlScheme === 'dpad' ? (
-          <div className="grid grid-cols-3 gap-1 bg-gray-950/75 p-1.5 rounded-xl border border-cyan-500/20 backdrop-blur-md pointer-events-auto touch-none shadow-xl">
+          <div className="grid grid-cols-3 gap-1 bg-canvas/75 p-1.5 rounded-xl border border-emerald-500/20 backdrop-blur-md pointer-events-auto touch-none shadow-xl">
             <div />
             <button
               onTouchStart={(e) => { e.preventDefault(); onThrust(true); }}
               onTouchEnd={(e) => { e.preventDefault(); onThrust(false); }}
               onMouseDown={() => onThrust(true)}
               onMouseUp={() => onThrust(false)}
-              className="w-9 h-9 rounded-lg bg-gray-900/90 active:bg-cyan-500 active:text-gray-950 text-cyan-400 border border-gray-800 flex items-center justify-center font-bold touch-none select-none"
+              className="w-9 h-9 rounded-lg bg-surface/90 active:bg-emerald-500 active:text-canvas text-emerald-400 border border-subtle flex items-center justify-center font-bold touch-none select-none"
             >
               <ArrowUp className="w-4 h-4" />
             </button>
@@ -214,7 +214,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onTouchEnd={(e) => { e.preventDefault(); onTurnLeft(false); }}
               onMouseDown={() => onTurnLeft(true)}
               onMouseUp={() => onTurnLeft(false)}
-              className="w-9 h-9 rounded-lg bg-gray-900/90 active:bg-cyan-500 active:text-gray-950 text-cyan-400 border border-gray-800 flex items-center justify-center font-bold touch-none select-none"
+              className="w-9 h-9 rounded-lg bg-surface/90 active:bg-emerald-500 active:text-canvas text-emerald-400 border border-subtle flex items-center justify-center font-bold touch-none select-none"
             >
               <ArrowLeft className="w-4 h-4" />
             </button>
@@ -223,7 +223,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onTouchEnd={(e) => { e.preventDefault(); onReverse(false); }}
               onMouseDown={() => onReverse(true)}
               onMouseUp={() => onReverse(false)}
-              className="w-9 h-9 rounded-lg bg-gray-900/90 active:bg-cyan-500 active:text-gray-950 text-amber-400 border border-gray-800 flex items-center justify-center font-bold touch-none select-none"
+              className="w-9 h-9 rounded-lg bg-surface/90 active:bg-emerald-500 active:text-canvas text-amber-400 border border-subtle flex items-center justify-center font-bold touch-none select-none"
             >
               <ArrowDown className="w-4 h-4" />
             </button>
@@ -232,7 +232,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onTouchEnd={(e) => { e.preventDefault(); onTurnRight(false); }}
               onMouseDown={() => onTurnRight(true)}
               onMouseUp={() => onTurnRight(false)}
-              className="w-9 h-9 rounded-lg bg-gray-900/90 active:bg-cyan-500 active:text-gray-950 text-cyan-400 border border-gray-800 flex items-center justify-center font-bold touch-none select-none"
+              className="w-9 h-9 rounded-lg bg-surface/90 active:bg-emerald-500 active:text-canvas text-emerald-400 border border-subtle flex items-center justify-center font-bold touch-none select-none"
             >
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -244,21 +244,21 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gray-950/60 border border-cyan-500/30 flex items-center justify-center pointer-events-auto backdrop-blur-sm shadow-xl touch-none select-none"
+            className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-canvas/60 border border-emerald-500/30 flex items-center justify-center pointer-events-auto backdrop-blur-sm shadow-xl touch-none select-none"
           >
             <div
-              className="w-10 h-10 rounded-full bg-gradient-to-b from-cyan-400 to-blue-600 border border-white/40 shadow-md flex items-center justify-center pointer-events-none"
+              className="w-10 h-10 rounded-full bg-gradient-to-b from-emerald-400 to-blue-600 border border-white/40 shadow-md flex items-center justify-center pointer-events-none"
               style={{
                 transform: `translate(${joystickPos.x}px, ${joystickPos.y}px)`,
                 transition: isDraggingJoystick ? 'none' : 'transform 0.15s ease-out',
               }}
             >
-              <Compass className="w-4 h-4 text-gray-950" />
+              <Compass className="w-4 h-4 text-canvas" />
             </div>
-            <span className="absolute top-1 text-[7px] font-mono text-gray-500">N</span>
-            <span className="absolute bottom-1 text-[7px] font-mono text-gray-500">S</span>
-            <span className="absolute left-1 text-[7px] font-mono text-gray-500">W</span>
-            <span className="absolute right-1 text-[7px] font-mono text-gray-500">E</span>
+            <span className="absolute top-1 text-[7px] font-mono text-muted">N</span>
+            <span className="absolute bottom-1 text-[7px] font-mono text-muted">S</span>
+            <span className="absolute left-1 text-[7px] font-mono text-muted">W</span>
+            <span className="absolute right-1 text-[7px] font-mono text-muted">E</span>
           </div>
         )}
 
@@ -270,8 +270,8 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onClick={onToggleWarp}
               className={`px-2.5 py-1.5 rounded-lg font-mono text-[10px] font-bold border transition-colors shadow-md touch-none select-none ${
                 ship.isWarping
-                  ? 'bg-purple-600 text-white border-purple-400'
-                  : 'bg-gray-950/80 text-purple-300 border-purple-500/40 active:bg-purple-950'
+                  ? 'bg-purple-600 text-primary border-purple-400'
+                  : 'bg-canvas/80 text-purple-300 border-purple-500/40 active:bg-purple-950'
               }`}
             >
               WARP
@@ -286,7 +286,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onMouseDown={() => onReverse(true)}
               onMouseUp={() => onReverse(false)}
               onMouseLeave={() => onReverse(false)}
-              className="px-2.5 py-1.5 rounded-lg bg-gray-950/80 border border-amber-500/40 text-amber-300 active:bg-amber-500 active:text-gray-950 font-mono text-[10px] font-bold shadow-md touch-none select-none"
+              className="px-2.5 py-1.5 rounded-lg bg-canvas/80 border border-amber-500/40 text-amber-300 active:bg-amber-500 active:text-canvas font-mono text-[10px] font-bold shadow-md touch-none select-none"
             >
               BRAKE
             </button>
@@ -305,8 +305,8 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onMouseLeave={() => onNitro(false)}
               className={`flex items-center justify-center gap-1 px-3 h-10 rounded-xl font-bold font-mono text-[11px] tracking-wider transition-all shadow-lg select-none touch-none ${
                 ship.isNitroActive
-                  ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-gray-950 scale-95 ring-2 ring-orange-400'
-                  : 'bg-gradient-to-r from-orange-600/90 to-amber-600/90 border border-orange-400/40 text-white active:scale-95'
+                  ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-canvas scale-95 ring-2 ring-orange-400'
+                  : 'bg-gradient-to-r from-orange-600/90 to-amber-600/90 border border-orange-400/40 text-primary active:scale-95'
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-amber-200 fill-amber-200" />
@@ -323,7 +323,7 @@ export const MobileFlightControls: React.FC<MobileFlightControlsProps> = ({
               onMouseDown={() => onThrust(true)}
               onMouseUp={() => onThrust(false)}
               onMouseLeave={() => onThrust(false)}
-              className="flex-1 flex items-center justify-center gap-1 h-10 px-3.5 rounded-xl bg-cyan-500 active:bg-cyan-400 text-gray-950 font-bold font-mono text-xs tracking-wider shadow-lg shadow-cyan-950/40 select-none touch-none"
+              className="flex-1 flex items-center justify-center gap-1 h-10 px-3.5 rounded-xl bg-emerald-500 active:bg-emerald-400 text-canvas font-bold font-mono text-xs tracking-wider shadow-lg shadow-emerald-950/40 select-none touch-none"
             >
               <Rocket className="w-3.5 h-3.5" />
               <span>THRUST</span>

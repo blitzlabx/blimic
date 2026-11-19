@@ -777,7 +777,7 @@ export const CELESTIAL_BODIES: CelestialBodyData[] = [
     atmosphere: {
       hasAtmosphere: true,
       surfacePressureBar: 1.2,
-      description: 'A pale cyan-aquamarine atmosphere rich in hydrogen, helium, and methane ice crystals that absorb red light to produce its distinctive hue.',
+      description: 'A pale emerald-aquamarine atmosphere rich in hydrogen, helium, and methane ice crystals that absorb red light to produce its distinctive hue.',
       majorGases: [
         { name: 'Hydrogen', symbol: 'H2', percentage: 82.5, color: '#f59e0b' },
         { name: 'Helium', symbol: 'He', percentage: 15.2, color: '#fbbf24' },

@@ -153,7 +153,7 @@ export const SimulationViewer: React.FC<SimulationViewerProps> = ({
     <section
       id="simulation"
       ref={containerRef}
-      className={`relative w-full bg-gray-950 border-y border-gray-800/80 overflow-hidden select-none ${
+      className={`relative w-full bg-canvas border-y border-subtle/80 overflow-hidden select-none ${
         isDedicatedView
           ? 'h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)]'
           : 'h-[75vh] sm:h-[82vh] lg:h-[88vh]'

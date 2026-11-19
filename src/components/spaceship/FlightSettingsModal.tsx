@@ -30,26 +30,26 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
 }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
-      <div className="relative w-full max-w-xl bg-gray-950 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-xl bg-canvas border border-subtle rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="p-4 sm:p-5 bg-gray-900/70 border-b border-gray-800 flex items-center justify-between">
+        <div className="p-4 sm:p-5 bg-surface/70 border-b border-subtle flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+            <div className="w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
               <Sliders className="w-4 h-4" />
             </div>
             <div>
-              <span className="font-bold text-white font-display text-base block">
+              <span className="font-bold text-primary font-display text-base block">
                 Flight Controls & Simulation Preferences
               </span>
-              <span className="text-[11px] text-gray-400 font-mono">
+              <span className="text-[11px] text-secondary font-mono">
                 Calibrate steering sensitivity, throttle damping, and HUD visibility
               </span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+            className="p-1.5 rounded-lg text-secondary hover:text-primary hover:bg-surface-elevated transition-colors"
             aria-label="Close Settings"
           >
             <X className="w-5 h-5" />
@@ -62,11 +62,11 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
           {/* 1. Control Scheme Selection */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider flex items-center gap-1.5">
-                <Gamepad2 className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                <Gamepad2 className="w-3.5 h-3.5 text-emerald-400" />
                 Mobile / Touch Control Scheme
               </span>
-              <Badge variant="cyan">{settings.controlScheme.toUpperCase()}</Badge>
+              <Badge variant="emerald">{settings.controlScheme.toUpperCase()}</Badge>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[
@@ -80,25 +80,25 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
                   onClick={() => onUpdateSettings({ controlScheme: scheme.id as ControlScheme })}
                   className={`p-2.5 rounded-xl border text-left flex flex-col justify-between transition-all ${
                     settings.controlScheme === scheme.id
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 shadow-sm'
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-850 hover:text-gray-200 border-gray-800'
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 shadow-sm'
+                      : 'bg-surface text-secondary hover:bg-surface-elevated hover:text-primary border-subtle'
                   }`}
                 >
                   <span className="font-bold text-xs">{scheme.label}</span>
-                  <span className="text-[10px] text-gray-400 leading-tight mt-1">{scheme.desc}</span>
+                  <span className="text-[10px] text-secondary leading-tight mt-1">{scheme.desc}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* 2. Speed & Throttle Multiplier */}
-          <div className="space-y-2 pt-2 border-t border-gray-850">
+          <div className="space-y-2 pt-2 border-t border-subtle">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
                 <Gauge className="w-3.5 h-3.5 text-amber-400" />
                 Ship Velocity & Throttle Sensitivity
               </span>
-              <span className="text-cyan-400 font-bold">
+              <span className="text-emerald-400 font-bold">
                 {(settings.speedMultiplier * 100).toFixed(0)}% Speed
               </span>
             </div>
@@ -115,23 +115,23 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
                   className={`p-2.5 rounded-xl border text-left transition-all ${
                     Math.abs(settings.speedMultiplier - lvl.val) < 0.05
                       ? 'bg-amber-500/20 text-amber-300 border-amber-500/60 font-bold'
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-850 border-gray-800'
+                      : 'bg-surface text-secondary hover:bg-surface-elevated border-subtle'
                   }`}
                 >
                   <div className="text-xs">{lvl.label}</div>
-                  <div className="text-[10px] text-gray-400 mt-0.5">{lvl.desc}</div>
+                  <div className="text-[10px] text-secondary mt-0.5">{lvl.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* 3. Steering Sensitivity Slider */}
-          <div className="space-y-2 pt-2 border-t border-gray-850">
+          <div className="space-y-2 pt-2 border-t border-subtle">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider">
+              <span className="font-bold text-primary uppercase tracking-wider">
                 Steering Turn Sensitivity
               </span>
-              <span className="text-cyan-400 font-bold">
+              <span className="text-emerald-400 font-bold">
                 {(settings.turnSensitivity * 100).toFixed(0)}%
               </span>
             </div>
@@ -142,9 +142,9 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
               step="0.05"
               value={settings.turnSensitivity}
               onChange={(e) => onUpdateSettings({ turnSensitivity: parseFloat(e.target.value) })}
-              className="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+              className="w-full h-1.5 bg-surface-elevated rounded-lg appearance-none cursor-pointer accent-emerald-400"
             />
-            <div className="flex justify-between text-[10px] text-gray-400">
+            <div className="flex justify-between text-[10px] text-secondary">
               <span>Gentle & Stable (0.4x)</span>
               <span>Smooth (0.8x)</span>
               <span>Twitch / Fast (1.4x)</span>
@@ -152,20 +152,20 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
           </div>
 
           {/* 4. Planetary Auto-Deceleration & Gravitational Assist */}
-          <div className="p-3.5 bg-gray-900/60 border border-gray-800 rounded-xl flex items-center justify-between">
+          <div className="p-3.5 bg-surface/60 border border-subtle rounded-xl flex items-center justify-between">
             <div className="space-y-0.5 max-w-[78%]">
-              <div className="flex items-center gap-1.5 text-white font-bold">
+              <div className="flex items-center gap-1.5 text-primary font-bold">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Auto-Brake In Planetary Gravity Wells</span>
               </div>
-              <p className="text-[11px] text-gray-400 leading-normal">
+              <p className="text-[11px] text-secondary leading-normal">
                 Automatically slows down the spaceship upon entering a planet's sphere of influence so you can dock with ease.
               </p>
             </div>
             <button
               onClick={() => onUpdateSettings({ autoBrakeNearPlanets: !settings.autoBrakeNearPlanets })}
               className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-0.5 ${
-                settings.autoBrakeNearPlanets ? 'bg-emerald-500' : 'bg-gray-800'
+                settings.autoBrakeNearPlanets ? 'bg-emerald-500' : 'bg-surface-elevated'
               }`}
             >
               <div
@@ -177,9 +177,9 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
           </div>
 
           {/* 5. Inertial Space Damping Assist */}
-          <div className="space-y-2 pt-2 border-t border-gray-850">
+          <div className="space-y-2 pt-2 border-t border-subtle">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider">
+              <span className="font-bold text-primary uppercase tracking-wider">
                 Inertial Flight Stabilization
               </span>
               <Badge variant="neutral">{settings.spaceDamping.toUpperCase()}</Badge>
@@ -195,25 +195,25 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
                   onClick={() => onUpdateSettings({ spaceDamping: damp.id as 'assisted' | 'standard' | 'drift' })}
                   className={`p-2 rounded-xl border text-left transition-all ${
                     settings.spaceDamping === damp.id
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 font-bold'
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-850 border-gray-800'
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 font-bold'
+                      : 'bg-surface text-secondary hover:bg-surface-elevated border-subtle'
                   }`}
                 >
                   <div className="text-xs">{damp.label}</div>
-                  <div className="text-[10px] text-gray-400 mt-0.5 leading-tight">{damp.desc}</div>
+                  <div className="text-[10px] text-secondary mt-0.5 leading-tight">{damp.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* 6. HUD Layout & Screen Obstruction Setting */}
-          <div className="space-y-2 pt-2 border-t border-gray-850">
+          <div className="space-y-2 pt-2 border-t border-subtle">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider flex items-center gap-1.5">
-                <Eye className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                <Eye className="w-3.5 h-3.5 text-emerald-400" />
                 HUD Layout (Unblock Screen)
               </span>
-              <Badge variant="cyan">{settings.hudStyle.toUpperCase()}</Badge>
+              <Badge variant="emerald">{settings.hudStyle.toUpperCase()}</Badge>
             </div>
             <div className="grid grid-cols-3 gap-2">
               {[
@@ -226,25 +226,25 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
                   onClick={() => onUpdateSettings({ hudStyle: hud.id as HudStyle })}
                   className={`p-2 rounded-xl border text-left transition-all ${
                     settings.hudStyle === hud.id
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 font-bold'
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-850 border-gray-800'
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 font-bold'
+                      : 'bg-surface text-secondary hover:bg-surface-elevated border-subtle'
                   }`}
                 >
                   <div className="text-xs">{hud.label}</div>
-                  <div className="text-[10px] text-gray-400 mt-0.5 leading-tight">{hud.desc}</div>
+                  <div className="text-[10px] text-secondary mt-0.5 leading-tight">{hud.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
           {/* 7. Camera Perspective */}
-          <div className="space-y-2 pt-2 border-t border-gray-850">
+          <div className="space-y-2 pt-2 border-t border-subtle">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-200 uppercase tracking-wider flex items-center gap-1.5">
-                <Camera className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                <Camera className="w-3.5 h-3.5 text-emerald-400" />
                 Camera Perspective & FOV
               </span>
-              <Badge variant="cyan">{settings.cameraMode.replace('_', ' ').toUpperCase()}</Badge>
+              <Badge variant="emerald">{settings.cameraMode.replace('_', ' ').toUpperCase()}</Badge>
             </div>
             <div className="grid grid-cols-3 gap-2">
               {[
@@ -257,12 +257,12 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
                   onClick={() => onUpdateSettings({ cameraMode: cam.id as CameraPerspective })}
                   className={`p-2 rounded-xl border text-left transition-all ${
                     settings.cameraMode === cam.id
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60 font-bold'
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-850 border-gray-800'
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60 font-bold'
+                      : 'bg-surface text-secondary hover:bg-surface-elevated border-subtle'
                   }`}
                 >
                   <div className="text-xs">{cam.label}</div>
-                  <div className="text-[10px] text-gray-400 mt-0.5 leading-tight">{cam.desc}</div>
+                  <div className="text-[10px] text-secondary mt-0.5 leading-tight">{cam.desc}</div>
                 </button>
               ))}
             </div>
@@ -271,10 +271,10 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-gray-900/80 border-t border-gray-800 flex items-center justify-between text-xs font-mono">
+        <div className="p-4 bg-surface/80 border-t border-subtle flex items-center justify-between text-xs font-mono">
           <button
             onClick={onResetDefaults}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white border border-gray-800 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface hover:bg-surface-elevated text-secondary hover:text-primary border border-subtle transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset Recommended Defaults</span>
@@ -282,7 +282,7 @@ export const FlightSettingsModal: React.FC<FlightSettingsModalProps> = ({
 
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold transition-colors"
+            className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-canvas font-bold transition-colors"
           >
             Apply & Fly
           </button>

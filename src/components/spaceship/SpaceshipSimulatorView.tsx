@@ -305,7 +305,7 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
         isFullscreen
           ? 'h-screen'
           : 'h-[calc(100dvh-4rem)] sm:h-[calc(100dvh-5rem)]'
-      } bg-gray-950 overflow-hidden select-none`}
+      } bg-canvas overflow-hidden select-none`}
     >
       {/* Flight Canvas */}
       <canvas
@@ -316,18 +316,18 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
       {/* Teleportation / Hyperspace Warp Overlay Indicator */}
       {shipState?.teleport.isTeleporting && (
         <div className="absolute inset-0 z-30 pointer-events-none flex items-center justify-center bg-purple-950/20 backdrop-blur-[1px]">
-          <div className="bg-gray-950/90 border border-purple-500/80 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col items-center space-y-3 animate-pulse">
+          <div className="bg-canvas/90 border border-purple-500/80 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col items-center space-y-3 animate-pulse">
             <div className="flex items-center gap-2 text-purple-300 font-bold font-mono text-sm sm:text-base">
               <Zap className="w-5 h-5 text-purple-400 fill-purple-400" />
               <span>QUANTUM WARP TRANSIT // {shipState.teleport.targetBodyName.toUpperCase()}</span>
             </div>
-            <div className="w-48 sm:w-64 h-1.5 bg-gray-900 rounded-full overflow-hidden border border-purple-500/40">
+            <div className="w-48 sm:w-64 h-1.5 bg-surface rounded-full overflow-hidden border border-purple-500/40">
               <div
-                className="h-full bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-75"
+                className="h-full bg-gradient-to-r from-purple-500 to-emerald-400 transition-all duration-75"
                 style={{ width: `${Math.min(100, shipState.teleport.progress * 100)}%` }}
               />
             </div>
-            <span className="text-[10px] font-mono text-gray-400">
+            <span className="text-[10px] font-mono text-secondary">
               RELATIVISTIC TUNNEL CONVERGENCE: {Math.round(shipState.teleport.progress * 100)}%
             </span>
           </div>
@@ -437,18 +437,18 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
       {/* Target Planet Navigation Computer Modal */}
       {isTargetModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md">
-          <div className="relative w-full max-w-lg bg-gray-950 border border-gray-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+          <div className="relative w-full max-w-lg bg-canvas border border-subtle rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
             
-            <div className="p-4 sm:p-5 bg-gray-900/60 border-b border-gray-800 flex items-center justify-between">
+            <div className="p-4 sm:p-5 bg-surface/60 border-b border-subtle flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Compass className="w-4 h-4 text-cyan-400" />
-                <span className="font-bold text-white font-display text-base">
+                <Compass className="w-4 h-4 text-emerald-400" />
+                <span className="font-bold text-primary font-display text-base">
                   Navigation Computer // Target World
                 </span>
               </div>
               <button
                 onClick={() => setIsTargetModalOpen(false)}
-                className="p-1 text-gray-400 hover:text-white"
+                className="p-1 text-secondary hover:text-primary"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
@@ -456,7 +456,7 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
             </div>
 
             <div className="p-4 overflow-y-auto space-y-2">
-              <p className="text-xs text-gray-400 font-mono pb-2">
+              <p className="text-xs text-secondary font-mono pb-2">
                 Select a celestial destination to calibrate the ship's navigation computer and autopilot warp trajectory:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -468,8 +468,8 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
                       onClick={() => handleSelectTarget(body.id)}
                       className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all ${
                         isCurrentTarget
-                          ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/60'
-                          : 'bg-gray-900 text-gray-300 hover:bg-gray-850 hover:text-white border-gray-800'
+                          ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/60'
+                          : 'bg-surface text-primary hover:bg-surface-elevated hover:text-primary border-subtle'
                       }`}
                     >
                       <div
@@ -480,7 +480,7 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
                         <span className="font-bold text-sm block font-display truncate">
                           {body.name}
                         </span>
-                        <span className="text-[10px] text-gray-400 font-mono block truncate">
+                        <span className="text-[10px] text-secondary font-mono block truncate">
                           {body.typeLabel}
                         </span>
                       </div>
@@ -490,11 +490,11 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
               </div>
             </div>
 
-            <div className="p-3 bg-gray-900/60 border-t border-gray-800 flex items-center justify-between text-xs font-mono text-gray-400">
+            <div className="p-3 bg-surface/60 border-t border-subtle flex items-center justify-between text-xs font-mono text-secondary">
               <span>Kepler-X Nav Computer</span>
               <button
                 onClick={() => setIsTargetModalOpen(false)}
-                className="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-white"
+                className="px-3 py-1.5 rounded-lg bg-surface-elevated hover:bg-surface-elevated text-primary"
               >
                 Cancel
               </button>
@@ -507,7 +507,7 @@ export const SpaceshipSimulatorView: React.FC<SpaceshipSimulatorViewProps> = ({
       {/* Floating Fullscreen / Map Quick Button */}
       <button
         onClick={toggleFullscreen}
-        className="hidden md:flex items-center justify-center absolute bottom-4 right-4 z-20 w-8 h-8 rounded-lg bg-gray-950/80 hover:bg-gray-900 border border-gray-800 text-gray-400 hover:text-white transition-colors backdrop-blur-md"
+        className="hidden md:flex items-center justify-center absolute bottom-4 right-4 z-20 w-8 h-8 rounded-lg bg-canvas/80 hover:bg-surface border border-subtle text-secondary hover:text-primary transition-colors backdrop-blur-md"
         title="Toggle Fullscreen"
       >
         {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
